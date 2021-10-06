@@ -1,0 +1,28 @@
+<div *ngIf="!loading">
+  <ul *ngIf="todosService.todos.length; else noTodos">
+    <li *ngFor="let todo of todosService.todos; let idx = index">
+    <span [class.done]="todo.completed">
+      <input
+        type="checkbox"
+        [id]="idx"
+        [checked]="todo.completed"
+        (change)="onChange(todo.id)"
+      >
+      <label [for]="idx">
+        <strong>{{ idx + 1 }}</strong>
+        {{ todo.title }}
+      </label>
+    </span>
+
+      <small>{{ todo.date | date:'mediumDate' }}</small>
+
+      <button class="rm" (click)="removeTodo(todo.id)">&times;</button>
+    </li>
+  </ul>
+
+
+  <ng-template #noTodos>
+    <p>No todos now!</p>
+  </ng-template>
+</div>
+<p *ngIf="loading">Loading...</p>
