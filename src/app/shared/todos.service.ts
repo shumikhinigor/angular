@@ -13,7 +13,7 @@ export interface Todo {
 @Injectable({ providedIn: 'root' })
 export class TodosService {
   public todos: Todo[] = []
-  private limit: number = 3
+  private limit: number = 9
 
   constructor(private http: HttpClient) {}
 
@@ -34,7 +34,7 @@ export class TodosService {
     this.todos.push(todo)
   }
   loadMore() {
-    this.limit += 3
+    this.limit += 9
     this.getTodos().subscribe()
   }
 }
