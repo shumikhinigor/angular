@@ -11,6 +11,7 @@ import { delay } from 'rxjs/operators'
 export class TodosComponent implements OnInit {
 
   public loading: boolean = true
+  public search: string = ''
 
   constructor(public todosService: TodosService) { }
 
@@ -26,5 +27,7 @@ export class TodosComponent implements OnInit {
   removeTodo(id: number) {
     this.todosService.removeTodo(id)
   }
-
+  loadMore() {
+    this.todosService.loadMore()
+  }
 }

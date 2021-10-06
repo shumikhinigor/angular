@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { tap } from 'rxjs/operators'
@@ -13,11 +13,13 @@ export interface Todo {
 @Injectable({ providedIn: 'root' })
 export class TodosService {
   public todos: Todo[] = []
+  private limit: number = 3
 
   constructor(private http: HttpClient) {}
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
+    return this.http
+      .get<Todo[]>(`https://jsonplaceholder.typicode.com/todos?_limit=${this.limit}`)
       .pipe(tap(todos => this.todos = todos))
   }
 
@@ -27,5 +29,12 @@ export class TodosService {
   }
   removeTodo(id: number) {
     this.todos = this.todos.filter(t => t.id !== id)
+  }
+  addTodo(todo: Todo) {
+    this.todos.push(todo)
+  }
+  loadMore() {
+    this.limit += 3
+    this.getTodos().subscribe()
   }
 }

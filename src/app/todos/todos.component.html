@@ -1,25 +1,42 @@
 <div *ngIf="!loading">
-  <ul *ngIf="todosService.todos.length; else noTodos">
-    <li *ngFor="let todo of todosService.todos; let idx = index">
-    <span [class.done]="todo.completed">
+  <div class="wrapper" *ngIf="todosService.todos.length; else noTodos">
+    <div class="filter">
       <input
-        type="checkbox"
-        [id]="idx"
-        [checked]="todo.completed"
-        (change)="onChange(todo.id)"
+        type="text"
+        placeholder="Filter todo by title..."
+        [(ngModel)]="search"
       >
-      <label [for]="idx">
-        <strong>{{ idx + 1 }}</strong>
-        {{ todo.title }}
-      </label>
-    </span>
+    </div>
+    <div class="wrapper" *ngIf="(todosService.todos | search:search).length; else notFound">
+      <ul class="list">
+        <li *ngFor="let todo of todosService.todos | search:search; let idx = index">
+        <span [class.done]="todo.completed">
+          <input
+            type="checkbox"
+            [id]="idx"
+            [checked]="todo.completed"
+            (change)="onChange(todo.id)"
+          >
+          <label [for]="idx">
+            <strong>{{ idx + 1 }}</strong>
+            {{ todo.title }}
+          </label>
+        </span>
+          <small>{{ todo.date | date:'mediumDate' }}</small>
+          <button class="rm" (click)="removeTodo(todo.id)">&times;</button>
+        </li>
+      </ul>
 
-      <small>{{ todo.date | date:'mediumDate' }}</small>
+      <button
+        class="more"
+        (click)="loadMore()"
+      >More</button>
+    </div>
 
-      <button class="rm" (click)="removeTodo(todo.id)">&times;</button>
-    </li>
-  </ul>
-
+    <ng-template #notFound>
+      <p>No found todos!</p>
+    </ng-template>
+  </div>
 
   <ng-template #noTodos>
     <p>No todos now!</p>

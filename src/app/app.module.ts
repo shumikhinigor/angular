@@ -5,17 +5,21 @@ import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoFormComponent } from './todo-form/todo-form.component';
+import { FormsModule } from "@angular/forms";
+import {SearchPipe} from "./shared/search.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    SearchPipe
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
