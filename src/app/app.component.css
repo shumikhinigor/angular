@@ -1,0 +1,10 @@
+.container {
+  max-width: 1200px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+.container h1 {
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=app.component.css.map */

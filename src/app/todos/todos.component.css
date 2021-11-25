@@ -1,0 +1,89 @@
+div.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+ul.list {
+  list-style: none;
+  padding: 0 0 30px;
+  margin: 0;
+  width: 100%;
+}
+ul.list li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #4B515D;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+ul.list li:last-child {
+  margin-bottom: 0;
+}
+ul.list li .done {
+  text-decoration: line-through;
+}
+ul.list li input {
+  margin-right: 10px;
+}
+ul.list li button {
+  width: 25px;
+  height: 25px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+ul.list li button:hover {
+  background: #CC0000;
+}
+ul.list li button:active {
+  background: #CC0000;
+}
+
+button.more {
+  width: 250px;
+  height: 40px;
+  background: red;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  transition: all 0.2s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.more:hover {
+  background: #CC0000;
+}
+button.more:active {
+  background: #CC0000;
+}
+button.more:disabled {
+  background: #4B515D;
+}
+
+div.filter {
+  width: 100%;
+}
+div.filter input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #4B515D;
+  border-radius: 5px;
+  outline: none;
+  padding: 0 15px;
+  box-sizing: border-box;
+  margin: 0 0 30px;
+}
+
+/*# sourceMappingURL=todos.component.css.map */
